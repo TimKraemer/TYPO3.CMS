@@ -406,8 +406,10 @@ class LanguageMenuProcessor implements DataProcessorInterface
             $menu = json_decode($renderedMenu, true);
             $processedMenu = [];
 
-            foreach ($menu as $key => $language) {
-                $processedMenu[$key] = $language;
+            if(is_iterable($menu)) {
+                foreach ($menu as $key => $language) {
+                    $processedMenu[$key] = $language;
+                }
             }
 
             $processedData[$this->menuTargetVariableName] = $processedMenu;
